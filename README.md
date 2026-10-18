@@ -34,7 +34,7 @@ Example:
 
 ```json
 {
-  "01": "https://search.google.com/local/writereview?placeid=ChIJq2Zt1diXEmsoKGvCVqj16fw",
+  "01": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b1297d8d56d66ab:0xfce9f5a856c26b28!12e1",
   "02": "https://example.com/review",
   "03": ""
 }

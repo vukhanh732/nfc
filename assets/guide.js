@@ -2,7 +2,7 @@
   "use strict";
 
   const requestTemplate = document.getElementById("request-template");
-  const placeIdInput = document.getElementById("place-id");
+  const mapsUrlInput = document.getElementById("maps-url");
   const reviewLinkOutput = document.getElementById("review-link");
   const feedback = document.getElementById("guide-feedback");
 
@@ -24,14 +24,22 @@
   }
 
   function buildReviewLink() {
-    const placeId = placeIdInput.value.trim();
-    const isValid = /^[A-Za-z0-9_-]{10,200}$/.test(placeId);
-    reviewLinkOutput.value = isValid
-      ? "https://search.google.com/local/writereview?placeid=" + encodeURIComponent(placeId)
+    const value = mapsUrlInput.value.trim();
+    let expandedUrl = value;
+    try {
+      expandedUrl = decodeURIComponent(value);
+    } catch (_) {
+      expandedUrl = value;
+    }
+    const match = expandedUrl.match(/0x[0-9a-f]+:0x[0-9a-f]+/i);
+    reviewLinkOutput.value = match
+      ? "https://www.google.com/maps/place//data=!4m3!3m2!1s" + match[0] + "!12e1"
       : "";
-    feedback.textContent = placeId && !isValid ? "Enter a valid Google Place ID." : "";
-    feedback.classList.toggle("error", Boolean(placeId && !isValid));
-    return isValid;
+    feedback.textContent = value && !match
+      ? "Open the short Maps link in Chrome, then copy the expanded google.com/maps URL."
+      : "";
+    feedback.classList.toggle("error", Boolean(value && !match));
+    return Boolean(match);
   }
 
   document.getElementById("copy-request").addEventListener("click", async function () {
@@ -40,13 +48,13 @@
     feedback.classList.toggle("error", !copied);
   });
 
-  placeIdInput.addEventListener("input", buildReviewLink);
+  mapsUrlInput.addEventListener("input", buildReviewLink);
 
   document.getElementById("copy-review-link").addEventListener("click", async function () {
     if (!buildReviewLink()) {
-      feedback.textContent = "Enter a valid Google Place ID first.";
+      feedback.textContent = "Paste an expanded Google Maps URL first.";
       feedback.classList.add("error");
-      placeIdInput.focus();
+      mapsUrlInput.focus();
       return;
     }
 

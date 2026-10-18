@@ -34,20 +34,18 @@
     <section class="guide-section">
       <h2>Do it yourself</h2>
       <ol class="workflow-list">
-        <li>Find the exact listing using Google's Place ID Finder.</li>
-        <li>Copy its Place ID.</li>
-        <li>Paste the Place ID into the builder below.</li>
+        <li>Paste the Maps share link into Chrome and open it.</li>
+        <li>After the listing loads, copy the expanded <strong>google.com/maps</strong> URL from Chrome's address bar.</li>
+        <li>Paste that expanded URL into the builder below.</li>
         <li>Copy the generated review link.</li>
         <li>Open Admin, choose a card, paste the link, and select <strong>Save Locally</strong>.</li>
         <li>Select <strong>Test</strong>. Confirm the correct business name appears.</li>
         <li>Download <strong>redirects.json</strong> and replace the file on GitHub.</li>
       </ol>
-      <a class="button secondary" href="https://developers.google.com/maps/documentation/places/web-service/place-id" target="_blank" rel="noopener noreferrer">Open Place ID Finder</a>
-
       <div class="builder panel">
         <div class="field">
-          <label for="place-id">Google Place ID</label>
-          <input id="place-id" type="text" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="ChIJ...">
+          <label for="maps-url">Expanded Google Maps URL</label>
+          <textarea id="maps-url" rows="4" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="https://www.google.com/maps/place/..."></textarea>
         </div>
         <div class="field">
           <label for="review-link">Direct review link</label>
