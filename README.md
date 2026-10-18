@@ -32,7 +32,7 @@ Example:
 
 ```json
 {
-  "01": "https://maps.app.goo.gl/yrvLERWRamvm8pXJ9",
+  "01": "https://search.google.com/local/writereview?placeid=ChIJq2Zt1diXEmsoKGvCVqj16fw",
   "02": "https://example.com/review",
   "03": ""
 }
