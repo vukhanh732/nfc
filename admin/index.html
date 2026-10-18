@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Manage local NFC card redirect settings.">
+  <title>Admin | NFC Review Cards</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">Back</a>
+    <h1>NFC Review Cards</h1>
+
+    <section class="panel" aria-label="Card settings">
+      <div class="field">
+        <label for="card-select">Card</label>
+        <select id="card-select" aria-describedby="status-value"></select>
+      </div>
+
+      <div class="field">
+        <label for="destination">Destination URL</label>
+        <input id="destination" type="url" inputmode="url" autocomplete="url" autocapitalize="none" spellcheck="false" placeholder="https://maps.app.goo.gl/...">
+      </div>
+
+      <div class="status-line">
+        <span class="label">Status</span>
+        <span class="status-value" id="status-value">Not configured</span>
+      </div>
+
+      <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+
+      <div class="actions">
+        <button type="button" id="save-button">Save Locally</button>
+        <button type="button" class="secondary" id="test-button">Test</button>
+      </div>
+    </section>
+
+    <div class="actions two-column" aria-label="JSON tools">
+      <button type="button" class="secondary" id="copy-button">Copy JSON</button>
+      <button type="button" class="secondary" id="download-button">Download JSON</button>
+      <button type="button" class="secondary" id="import-button">Import JSON</button>
+      <input class="visually-hidden" id="import-file" type="file" accept="application/json,.json">
+    </div>
+
+    <p class="note">Changes are saved on this phone only. Export redirects.json and replace the file in GitHub to make them live.</p>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script src="../assets/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Permanent URLs for programming NFC review cards.">
+  <title>NFC Card Setup</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">Back</a>
+    <h1>NFC Card Setup</h1>
+    <p class="setup-intro">Program each card once with its permanent URL.</p>
+
+    <div class="url-list" id="url-list"></div>
+    <p class="feedback" id="setup-feedback" role="status" aria-live="polite"></p>
+
+    <section class="instructions">
+      <h2>Android NFC Tools</h2>
+      <ol>
+        <li>Open NFC Tools</li>
+        <li>Go to Write</li>
+        <li>Add a URL/URI record</li>
+        <li>Paste the card URL</li>
+        <li>Tap Write</li>
+        <li>Hold the phone against the NFC card</li>
+        <li>Label the physical card with the same number</li>
+      </ol>
+      <p class="warning">Do not make the NFC tag read-only until everything has been fully tested.</p>
+    </section>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script src="../assets/setup.js"></script>
+</body>
+</html>
