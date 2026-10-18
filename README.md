@@ -10,6 +10,8 @@ Repository: `vukhanh732/nfc`
 
 Site: `https://vukhanh732.github.io/nfc/`
 
+Workflow guide: `https://vukhanh732.github.io/nfc/guide/`
+
 Each card uses a permanent URL from `https://vukhanh732.github.io/nfc/01/` through `https://vukhanh732.github.io/nfc/20/`. Program this short URL onto the physical NFC card, not the longer Google review URL. You can later change the destination in `redirects.json` without rewriting the tag.
 
 ## Enable GitHub Pages

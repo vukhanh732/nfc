@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Quick workflow for adding a business to an NFC review card.">
+  <title>How to Use | NFC Review Cards</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">Back</a>
+    <h1>How to Use</h1>
+
+    <section class="guide-section">
+      <h2>Fastest workflow</h2>
+      <ol class="workflow-list">
+        <li>Open Google Maps and find the exact business.</li>
+        <li>Check the address, phone number, and photos.</li>
+        <li>Tap <strong>Share</strong>, then <strong>Copy link</strong>.</li>
+        <li>Copy the request below and send it with the Maps link.</li>
+        <li>Wait for the card update to be deployed, then test the permanent NFC URL.</li>
+      </ol>
+      <a class="button secondary" href="https://www.google.com/maps/search/" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
+
+      <div class="copy-box">
+        <label for="request-template">Request template</label>
+        <textarea id="request-template" rows="4" readonly>Set card [number] to this business's direct Google review page: [paste Google Maps share link]</textarea>
+        <button type="button" id="copy-request">Copy Request</button>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2>Do it yourself</h2>
+      <ol class="workflow-list">
+        <li>Find the exact listing using Google's Place ID Finder.</li>
+        <li>Copy its Place ID.</li>
+        <li>Paste the Place ID into the builder below.</li>
+        <li>Copy the generated review link.</li>
+        <li>Open Admin, choose a card, paste the link, and select <strong>Save Locally</strong>.</li>
+        <li>Select <strong>Test</strong>. Confirm the correct business name appears.</li>
+        <li>Download <strong>redirects.json</strong> and replace the file on GitHub.</li>
+      </ol>
+      <a class="button secondary" href="https://developers.google.com/maps/documentation/places/web-service/place-id" target="_blank" rel="noopener noreferrer">Open Place ID Finder</a>
+
+      <div class="builder panel">
+        <div class="field">
+          <label for="place-id">Google Place ID</label>
+          <input id="place-id" type="text" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="ChIJ...">
+        </div>
+        <div class="field">
+          <label for="review-link">Direct review link</label>
+          <textarea id="review-link" rows="3" readonly placeholder="Your review link will appear here"></textarea>
+        </div>
+        <p class="feedback" id="guide-feedback" role="status" aria-live="polite"></p>
+        <button type="button" id="copy-review-link">Copy Review Link</button>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2>Publish and program</h2>
+      <div class="stack">
+        <a class="button" href="../admin/">Open Admin</a>
+        <a class="button secondary" href="https://github.com/vukhanh732/nfc/blob/main/redirects.json" target="_blank" rel="noopener noreferrer">Open redirects.json</a>
+        <a class="button secondary" href="../setup/">Open NFC Setup</a>
+      </div>
+      <p class="note">A customer must be signed into a Google account to submit a review.</p>
+    </section>
+  </main>
+  <script src="../assets/guide.js"></script>
+</body>
+</html>
