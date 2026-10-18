@@ -1,0 +1,85 @@
+name: Set card from Google Maps link
+
+on:
+  workflow_dispatch:
+    inputs:
+      card:
+        description: Card number (01 through 20)
+        required: true
+        type: string
+      maps_url:
+        description: Google Maps share link
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update-card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate input and resolve Maps link
+        env:
+          CARD: ${{ inputs.card }}
+          MAPS_URL: ${{ inputs.maps_url }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          from urllib.parse import urlparse
+
+          card = os.environ["CARD"].strip()
+          maps_url = os.environ["MAPS_URL"].strip()
+          if not re.fullmatch(r"(?:0[1-9]|1[0-9]|20)", card):
+              raise SystemExit("Card must be 01 through 20.")
+
+          parsed = urlparse(maps_url)
+          allowed_hosts = {"maps.app.goo.gl", "google.com", "www.google.com", "maps.google.com"}
+          if parsed.scheme != "https" or parsed.hostname not in allowed_hosts:
+              raise SystemExit("Enter a valid HTTPS Google Maps link.")
+          PY
+
+          resolved_url="$(curl --fail --silent --show-error --location --max-redirs 10 --output /dev/null --write-out '%{url_effective}' "$MAPS_URL")"
+          printf 'RESOLVED_URL=%s\n' "$resolved_url" >> "$GITHUB_ENV"
+
+      - name: Create direct review link
+        env:
+          CARD: ${{ inputs.card }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          card = os.environ["CARD"].strip()
+          resolved_url = os.environ["RESOLVED_URL"]
+          match = re.search(r"0x[0-9a-f]+:0x[0-9a-f]+", resolved_url, re.I)
+          if not match:
+              raise SystemExit("Could not find a Google place identifier. Share the business listing itself, not directions or a search-results page.")
+
+          review_url = "https://www.google.com/maps/place//data=!4m3!3m2!1s" + match.group(0) + "!12e1"
+          path = Path("redirects.json")
+          redirects = json.loads(path.read_text())
+          redirects[card] = review_url
+          path.write_text(json.dumps(redirects, indent=2) + "\n")
+          print(f"Card {card} set to {review_url}")
+          PY
+
+      - name: Publish redirect
+        env:
+          CARD: ${{ inputs.card }}
+        run: |
+          if git diff --quiet -- redirects.json; then
+            echo "Card $CARD is already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add redirects.json
+          git commit -m "Configure card $CARD from Google Maps"
+          git push

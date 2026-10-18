@@ -14,48 +14,42 @@
     <h1>How to Use</h1>
 
     <section class="guide-section">
-      <h2>Create the review link</h2>
+      <h2>Set a card from your phone</h2>
       <ol class="workflow-list">
         <li>Find the business in Google Maps and check its address.</li>
         <li>Tap <strong>Share</strong>, then <strong>Copy link</strong>.</li>
-        <li>Paste that link into Chrome and open it.</li>
-        <li>Copy the expanded <strong>google.com/maps</strong> URL from Chrome's address bar.</li>
-        <li>Paste the expanded URL below.</li>
+        <li>Tap <strong>Set Card from Maps Link</strong> below.</li>
+        <li>Sign in to GitHub if asked.</li>
+        <li>Tap <strong>Run workflow</strong>.</li>
+        <li>Enter the card number, such as <strong>03</strong>.</li>
+        <li>Paste the short Google Maps link.</li>
+        <li>Tap the green <strong>Run workflow</strong> button.</li>
+        <li>Wait a few minutes, then scan the NFC card.</li>
       </ol>
-      <a class="button secondary" href="https://www.google.com/maps/search/" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
-      <div class="builder panel">
-        <div class="field">
-          <label for="maps-url">Expanded Google Maps URL</label>
-          <textarea id="maps-url" rows="4" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="https://www.google.com/maps/place/..."></textarea>
-        </div>
-        <div class="field">
-          <label for="review-link">Direct review link</label>
-          <textarea id="review-link" rows="3" readonly placeholder="Your review link will appear here"></textarea>
-        </div>
-        <p class="feedback" id="guide-feedback" role="status" aria-live="polite"></p>
-        <button type="button" id="copy-review-link">Copy Review Link</button>
+      <div class="stack">
+        <a class="button secondary" href="https://www.google.com/maps/search/" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
+        <a class="button" href="https://github.com/vukhanh732/nfc/actions/workflows/update-card.yml" target="_blank" rel="noopener noreferrer">Set Card from Maps Link</a>
       </div>
+      <p class="note">The copied maps.app.goo.gl short link is correct. You do not need to expand it.</p>
     </section>
 
     <section class="guide-section">
-      <h2>Save and publish</h2>
+      <h2>If you already have a direct review link</h2>
       <ol class="workflow-list">
-        <li>Copy the review link above.</li>
         <li>Open Admin and choose the card number.</li>
         <li>Paste the review link and tap <strong>Save Locally</strong>.</li>
         <li>Tap <strong>Test</strong> and confirm the correct business opens.</li>
         <li>Tap <strong>Copy JSON</strong>.</li>
         <li>Tap <strong>Update GitHub</strong>.</li>
         <li>Replace all the file contents, then tap <strong>Commit changes</strong>.</li>
-        <li>Wait a few minutes and scan the NFC card.</li>
+        <li>Wait a few minutes, then scan the NFC card.</li>
       </ol>
       <div class="stack">
         <a class="button" href="../admin/">Open Admin</a>
         <a class="button secondary" href="../setup/">Open NFC Setup</a>
       </div>
-      <p class="note">Save Locally does not update the live card. The card changes only after redirects.json is committed to GitHub and Pages finishes deploying.</p>
+      <p class="note">Save Locally does not update the live card. The card changes after redirects.json is committed to GitHub and Pages finishes deploying.</p>
     </section>
   </main>
-  <script src="../assets/guide.js"></script>
 </body>
 </html>

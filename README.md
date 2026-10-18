@@ -55,6 +55,8 @@ Open `https://vukhanh732.github.io/nfc/admin/` on the phone:
 
 Local changes remain only in that browser on that phone. The admin page cannot write to GitHub.
 
+For a Google Maps short link copied on a phone, select **Set Card from Maps Link**. Run the GitHub workflow with a card number and the unmodified `maps.app.goo.gl` link. The workflow resolves the listing, creates the direct review URL, updates `redirects.json`, and commits it to `main` automatically.
+
 ## Publish changes made on the phone
 
 1. Select **Copy JSON** on the admin page.
