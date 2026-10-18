@@ -109,19 +109,6 @@
     showFeedback("Copied", false);
   }
 
-  function downloadJson() {
-    const blob = new Blob([generatedJson()], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "redirects.json";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-    showFeedback("Downloaded redirects.json.", false);
-  }
-
   async function importJson(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -156,7 +143,6 @@
   document.getElementById("save-button").addEventListener("click", saveCurrentCard);
   document.getElementById("test-button").addEventListener("click", testCurrentUrl);
   document.getElementById("copy-button").addEventListener("click", copyJson);
-  document.getElementById("download-button").addEventListener("click", downloadJson);
   document.getElementById("import-button").addEventListener("click", function () { importInput.click(); });
   importInput.addEventListener("change", importJson);
 

@@ -37,14 +37,14 @@
       </div>
     </section>
 
-    <div class="actions two-column" aria-label="JSON tools">
-      <button type="button" class="secondary" id="copy-button">Copy JSON</button>
-      <button type="button" class="secondary" id="download-button">Download JSON</button>
+    <div class="actions" aria-label="JSON tools">
+      <button type="button" id="copy-button">Copy JSON</button>
+      <a class="button secondary" href="https://github.com/vukhanh732/nfc/edit/main/redirects.json" target="_blank" rel="noopener noreferrer">Update GitHub</a>
       <button type="button" class="secondary" id="import-button">Import JSON</button>
       <input class="visually-hidden" id="import-file" type="file" accept="application/json,.json">
     </div>
 
-    <p class="note">Changes are saved on this phone only. Export redirects.json and replace the file in GitHub to make them live.</p>
+    <p class="note">Save Locally keeps changes on this phone. To make them live, copy the JSON, open Update GitHub, replace all the file contents, and commit.</p>
   </main>
   <script src="../assets/shared.js"></script>
   <script src="../assets/admin.js"></script>

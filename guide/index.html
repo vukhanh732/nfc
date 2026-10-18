@@ -14,34 +14,15 @@
     <h1>How to Use</h1>
 
     <section class="guide-section">
-      <h2>Fastest workflow</h2>
+      <h2>Create the review link</h2>
       <ol class="workflow-list">
-        <li>Open Google Maps and find the exact business.</li>
-        <li>Check the address, phone number, and photos.</li>
+        <li>Find the business in Google Maps and check its address.</li>
         <li>Tap <strong>Share</strong>, then <strong>Copy link</strong>.</li>
-        <li>Copy the request below and send it with the Maps link.</li>
-        <li>Wait for the card update to be deployed, then test the permanent NFC URL.</li>
+        <li>Paste that link into Chrome and open it.</li>
+        <li>Copy the expanded <strong>google.com/maps</strong> URL from Chrome's address bar.</li>
+        <li>Paste the expanded URL below.</li>
       </ol>
       <a class="button secondary" href="https://www.google.com/maps/search/" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
-
-      <div class="copy-box">
-        <label for="request-template">Request template</label>
-        <textarea id="request-template" rows="4" readonly>Set card [number] to this business's direct Google review page: [paste Google Maps share link]</textarea>
-        <button type="button" id="copy-request">Copy Request</button>
-      </div>
-    </section>
-
-    <section class="guide-section">
-      <h2>Do it yourself</h2>
-      <ol class="workflow-list">
-        <li>Paste the Maps share link into Chrome and open it.</li>
-        <li>After the listing loads, copy the expanded <strong>google.com/maps</strong> URL from Chrome's address bar.</li>
-        <li>Paste that expanded URL into the builder below.</li>
-        <li>Copy the generated review link.</li>
-        <li>Open Admin, choose a card, paste the link, and select <strong>Save Locally</strong>.</li>
-        <li>Select <strong>Test</strong>. Confirm the correct business name appears.</li>
-        <li>Download <strong>redirects.json</strong> and replace the file on GitHub.</li>
-      </ol>
       <div class="builder panel">
         <div class="field">
           <label for="maps-url">Expanded Google Maps URL</label>
@@ -57,13 +38,22 @@
     </section>
 
     <section class="guide-section">
-      <h2>Publish and program</h2>
+      <h2>Save and publish</h2>
+      <ol class="workflow-list">
+        <li>Copy the review link above.</li>
+        <li>Open Admin and choose the card number.</li>
+        <li>Paste the review link and tap <strong>Save Locally</strong>.</li>
+        <li>Tap <strong>Test</strong> and confirm the correct business opens.</li>
+        <li>Tap <strong>Copy JSON</strong>.</li>
+        <li>Tap <strong>Update GitHub</strong>.</li>
+        <li>Replace all the file contents, then tap <strong>Commit changes</strong>.</li>
+        <li>Wait a few minutes and scan the NFC card.</li>
+      </ol>
       <div class="stack">
         <a class="button" href="../admin/">Open Admin</a>
-        <a class="button secondary" href="https://github.com/vukhanh732/nfc/blob/main/redirects.json" target="_blank" rel="noopener noreferrer">Open redirects.json</a>
         <a class="button secondary" href="../setup/">Open NFC Setup</a>
       </div>
-      <p class="note">A customer must be signed into a Google account to submit a review.</p>
+      <p class="note">Save Locally does not update the live card. The card changes only after redirects.json is committed to GitHub and Pages finishes deploying.</p>
     </section>
   </main>
   <script src="../assets/guide.js"></script>

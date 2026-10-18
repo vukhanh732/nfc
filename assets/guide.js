@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  const requestTemplate = document.getElementById("request-template");
   const mapsUrlInput = document.getElementById("maps-url");
   const reviewLinkOutput = document.getElementById("review-link");
   const feedback = document.getElementById("guide-feedback");
@@ -41,12 +40,6 @@
     feedback.classList.toggle("error", Boolean(value && !match));
     return Boolean(match);
   }
-
-  document.getElementById("copy-request").addEventListener("click", async function () {
-    const copied = await copyText(requestTemplate.value);
-    feedback.textContent = copied ? "Request copied." : "Could not copy the request.";
-    feedback.classList.toggle("error", !copied);
-  });
 
   mapsUrlInput.addEventListener("input", buildReviewLink);
 

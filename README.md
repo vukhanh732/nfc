@@ -51,18 +51,17 @@ Open `https://vukhanh732.github.io/nfc/admin/` on the phone:
 3. Select **Save Locally**.
 4. Use **Test** to open the destination in a new tab.
 5. Repeat for other cards.
-6. Select **Download JSON** to save `redirects.json`, or **Copy JSON** to copy its full contents.
+6. Select **Copy JSON** to copy the complete file contents.
 
 Local changes remain only in that browser on that phone. The admin page cannot write to GitHub.
 
 ## Publish changes made on the phone
 
-1. Download `redirects.json` from the admin page.
-2. Open the `vukhanh732/nfc` repository on GitHub.
-3. Open the existing `redirects.json` file.
-4. Choose **Upload files**, or edit the file and paste the copied JSON.
-5. Replace the existing file and commit the change to `main`.
-6. Wait for GitHub Pages to deploy, then test the card URL again.
+1. Select **Copy JSON** on the admin page.
+2. Select **Update GitHub**.
+3. Replace all the existing `redirects.json` contents with the copied JSON.
+4. Commit the change to `main`.
+5. Wait for GitHub Pages to deploy, then test the card URL again.
 
 The redirect pages request `redirects.json` without browser caching, but GitHub Pages deployment and CDN updates can still take a few minutes.
 
